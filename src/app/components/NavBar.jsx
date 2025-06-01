@@ -37,7 +37,7 @@ const NavBar = () => {
           >
             <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-yellow-500">
               <Image
-                src="/darklogo.png" // no ./ needed, use absolute path from public/
+                src="./darklogo.png" // no ./ needed, use absolute path from public/
                 alt="Dark Logo"
                 width={300} // use actual number (e.g., 300)
                 height={100} // use actual number (e.g., 100)
