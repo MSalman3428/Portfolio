@@ -20,12 +20,12 @@ const About = () => {
       <div className="absolute inset-0 bg-[url('/about-bg.jpg')] bg-cover bg-center opacity-20"></div>
       <div className="relative z-10 px-6 py-16 md:px-12 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
         
-        {/* Profile Image */}
+        {/* Profile  */}
         <div className="w-full md:w-1/3 flex justify-center">
           <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-yellow-400 shadow-2xl hover:shadow-yellow-400/30 transition-all duration-500">
             <Image
-              src="/about.jpg"
-              alt="Kazim Ullah - Software Engineer"
+              src="./about.jpg"
+              alt=""
               fill
               className="object-cover hover:scale-105 transition-transform duration-500"
               priority

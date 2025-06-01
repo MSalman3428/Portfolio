@@ -220,7 +220,7 @@ const ServicesPage = () => {
             <motion.div variants={fadeInUp} className="flex justify-center">
               <div className="w-full max-w-md rounded-xl shadow-lg overflow-hidden">
                 <Image 
-                  src="/darkexper.jpg" 
+                  src="./darkexper.jpg" 
                   alt="Why Choose Us" 
                   width={500}
                   height={500}
@@ -254,7 +254,7 @@ const ServicesPage = () => {
       <section className="relative w-full h-[80vh] overflow-hidden">
         <div className="absolute inset-0 bg-gray-800">
           <Image
-            src="/conact.jpg"
+            src="./conact.jpg"
             alt="Collaboration Background"
             fill
             priority

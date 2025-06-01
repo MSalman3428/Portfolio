@@ -6,7 +6,7 @@ const Contact = () => {
     <section className="relative py-24 bg-gray-900 text-white overflow-hidden">
       <div 
         className="absolute inset-0 bg-[url('/contact-bg.jpg')] bg-cover bg-center opacity-30"
-        style={{ backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/contact.jpg')" }}
+        style={{ backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./contact.jpg')" }}
       ></div>
       
       <div className="relative z-10 container mx-auto px-6">

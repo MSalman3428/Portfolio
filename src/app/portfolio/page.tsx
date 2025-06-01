@@ -11,7 +11,7 @@ const Portfolio = () => {
       <section
         className="relative w-full min-h-[80vh] flex items-center justify-center"
         style={{
-          backgroundImage: 'url(/portfolio1.jpg)',
+          backgroundImage: 'url(./portfolio1.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -71,7 +71,7 @@ const Portfolio = () => {
             <div className="bg-gray-800 rounded-xl overflow-hidden transition-transform duration-500 hover:scale-105 hover:shadow-2xl">
               <div className="h-64 overflow-hidden relative">
                 <Image
-                  src="/ecommerce-project.jpg"
+                  src="./ecommerce-project.jpg"
                   alt="E-Commerce Platform"
                   fill
                   className="object-cover"

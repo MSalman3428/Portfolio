@@ -168,7 +168,7 @@ export default function Home() {
       <section className="relative w-full min-h-screen">
         <div className="absolute inset-0">
           <Image
-            src="/hero.jpg"
+            src="./hero.jpg"
             alt="Background"
             fill
             className="object-cover"
@@ -323,7 +323,7 @@ export default function Home() {
       <section className="relative py-32 px-4 bg-black overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/contactus.jpg"
+            src="./contactus.jpg"
             alt="Background"
             fill
             className="object-cover opacity-40"
@@ -379,7 +379,7 @@ export default function Home() {
             >
               <div className="relative w-full max-w-md rounded-xl overflow-hidden shadow-2xl aspect-square">
                 <Image 
-                  src="/darkexper.jpg" 
+                  src="./darkexper.jpg" 
                   alt="Why Choose Us"
                   fill 
                   className="object-cover hover:scale-105 transition-transform duration-500"

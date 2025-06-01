@@ -36,12 +36,14 @@ const NavBar = () => {
             className="flex items-center gap-3"
           >
             <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-yellow-500">
-  <img
-    src="/darklogo.png"
-    alt="Muhammad Salman Logo"
-    className="object-cover w-full h-full"
-  />
-</div>
+              <Image
+                src="/darklogo.png" // no ./ needed, use absolute path from public/
+                alt="Dark Logo"
+                width={300} // use actual number (e.g., 300)
+                height={100} // use actual number (e.g., 100)
+                className="object-cover w-full h-full"
+              />
+            </div>
 
             <span className="text-xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
               Muhammad Salman
