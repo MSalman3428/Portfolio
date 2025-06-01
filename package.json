@@ -4,12 +4,10 @@
   "private": true,
   "homepage": "https://sheikh763.github.io/portfolio",
   "scripts": {
-  "dev": "next dev --turbopack",
+  "dev": "next dev",
   "build": "next build",
-  "start": "next start",
-  "lint": "next lint",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d out"
+  "export": "next export",
+  "start": "next start"
 },
   "dependencies": {
     "framer-motion": "^12.11.0",
