@@ -9,6 +9,20 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicondark.ico",
   },
+  keywords: [
+    "MSalman3428",
+    "github";
+    "Muhammad Salman",
+    "Web Developer",
+    "Frontend Developer",
+    "Next.js Developer",
+    "React Developer",
+    "JavaScript",
+    "Portfolio",
+    "Web Design",
+    "UI/UX",
+    "SEO Optimized Website"
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
