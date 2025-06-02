@@ -186,7 +186,7 @@ const Portfolio = () => {
             <div className="mt-16 pt-8 border-t border-gray-800">
               <h3 className="text-lg font-medium text-gray-400 mb-6">Other Ways To Connect</h3>
               <div className="flex justify-center gap-6">
-                <a href="mailto:hello@example.com" className="text-gray-400 hover:text-yellow-400 transition-colors">
+                <a href="mailto:msalman3428@gmail.com" className="text-gray-400 hover:text-yellow-400 transition-colors">
                   <span className="flex items-center">
                     <EnvelopeIcon className="w-5 h-5 mr-2" />
                     Email Me
