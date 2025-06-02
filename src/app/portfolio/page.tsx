@@ -192,7 +192,7 @@ const Portfolio = () => {
                     Email Me
                   </span>
                 </a>
-                <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-yellow-400 transition-colors">
+                <a href="https://www.linkedin.com/in/muhammad-salman-858247306/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-yellow-400 transition-colors">
                   <span className="flex items-center">
                     <LinkedInIcon className="w-5 h-5 mr-2" />
                     LinkedIn
