@@ -11,7 +11,8 @@ export const metadata: Metadata = {
   },
   keywords: [
     "MSalman3428",
-    "github";
+    "github",
+    "muhammad salman github",
     "Muhammad Salman",
     "Web Developer",
     "Frontend Developer",
