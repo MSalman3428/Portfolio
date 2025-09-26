@@ -283,7 +283,7 @@ const About = () => {
           className="relative px-8 py-4 border-2 border-yellow-400 text-yellow-400 font-bold rounded-lg overflow-hidden group transition-all duration-300"
         >
           <span className="relative z-10">View My Work</span>
-          <span className="absolute inset-0 bg-yellow-400 w-0 group-hover:w-full transition-all duration-500"></span>
+          <span className="absolute inset-0 bg-yellow-400 text-black w-0 group-hover:w-full transition-all duration-500"></span>
         </Link>
       </div>
     </div>
