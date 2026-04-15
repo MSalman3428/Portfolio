@@ -1,59 +1,30 @@
 "use client";
-
 import React from "react";
 import Link from "next/link";
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
-import { useTheme } from "next-themes";
-import { GitBranchIcon } from "lucide-react";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 
 const Footer = () => {
-  const { theme, setTheme } = useTheme();
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-white">
-
-      {/* LINE */}
-      <div className="h-px w-full bg-gray-700"></div>
-
-      <div className="py-8 max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
-
-        {/* LINKS */}
-        <div className="flex gap-6">
-          <Link href="/" className="hover:text-yellow-400">
-            Home
-          </Link>
-          <Link href="/about" className="hover:text-yellow-400">
-            About
-          </Link>
-          <Link href="/services" className="hover:text-yellow-400">
-            Services
-          </Link>
-          <Link href="/contact" className="hover:text-yellow-400">
-            Contact
-          </Link>
+    <footer className="bg-gray-50 dark:bg-gray-950 text-slate-600 dark:text-gray-400 border-t border-gray-200 dark:border-gray-800 transition-colors">
+      <div className="py-12 max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+        
+        <div className="flex gap-8 font-medium">
+          <Link href="/" className="hover:text-yellow-500 transition-colors">Home</Link>
+          <Link href="/about" className="hover:text-yellow-500 transition-colors">About</Link>
+          <Link href="/services" className="hover:text-yellow-500 transition-colors">Services</Link>
+          <Link href="/contact" className="hover:text-yellow-500 transition-colors">Contact</Link>
         </div>
 
-        {/* DARK MODE BUTTON */}
-        <button
-          onClick={() =>
-            setTheme(theme === "dark" ? "light" : "dark")
-          }
-          className="px-3 py-1 border border-yellow-400 text-yellow-400 rounded hover:bg-yellow-400 hover:text-black transition"
-        >
-          {theme === "dark" ? "Light Mode" : "Dark Mode"}
-        </button>
-
-        {/* SOCIAL */}
-        <div className="flex gap-4 text-xl">
-          <FaLinkedin className="hover:text-yellow-400 cursor-pointer" />
-          <GitBranchIcon className="hover:text-yellow-400 cursor-pointer" />
+        <div className="flex gap-6 text-2xl">
+          <Link href="#" className="hover:text-yellow-500 transition-colors"><FaLinkedin /></Link>
+          <Link href="#" className="hover:text-yellow-500 transition-colors"><FaGithub /></Link>
         </div>
       </div>
 
-      {/* BOTTOM */}
-      <div className="text-center text-sm text-gray-400 py-4 border-t border-gray-800">
-        © {year} Muhammad Salman. All rights reserved.
+      <div className="text-center pb-8 text-sm opacity-70">
+        © {year} Muhammad Salman. Built with Next.js & Tailwind.
       </div>
     </footer>
   );
