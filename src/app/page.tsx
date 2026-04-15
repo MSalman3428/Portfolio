@@ -46,7 +46,7 @@ export default function Home() {
       
       {/* HERO - Hardcoded dark overlay is fine for hero images */}
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
-        <Image src="/hero.jpg" alt="hero" fill className="object-cover" priority />
+        <Image src="./hero.jpg" alt="hero" fill className="object-cover" priority />
         <div className="absolute inset-0 bg-black/70" />
         <motion.div initial="hidden" animate="visible" variants={animations.staggerContainer} className="relative text-center px-6 text-white">
           <motion.h3 variants={animations.fadeInUp} className="text-yellow-400 text-xl mb-4">— Muhammad Salman</motion.h3>
