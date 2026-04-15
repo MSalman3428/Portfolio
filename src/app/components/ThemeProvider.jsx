@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 export default function ThemeProvider({ children }) {
   const [mounted, setMounted] = useState(false);
 
-  // Wait until mounted on client to prevent hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -18,7 +17,7 @@ export default function ThemeProvider({ children }) {
   return (
     <NextThemesProvider 
       attribute="class" 
-      defaultTheme="system" 
+      defaultTheme="light" 
       enableSystem={true}
     >
       {children}
