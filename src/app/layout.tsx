@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import { ThemeProvider } from "./components/ThemeProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -30,9 +31,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="antialiased">
+        <ThemeProvider>
         <NavBar />
         <main>{children}</main>
         <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
