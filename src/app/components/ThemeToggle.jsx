@@ -9,14 +9,22 @@ export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
-  if (!mounted) return null;
+  if (!mounted) return <div className="p-5"></div>; // Placeholder to prevent layout shift
 
   return (
     <button
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="p-2 rounded-lg bg-gray-800 text-yellow-400 hover:scale-110 transition"
+      className="relative p-2.5 rounded-xl bg-gray-200 dark:bg-gray-800 text-yellow-500 dark:text-yellow-400 
+                 hover:ring-2 hover:ring-yellow-400 transition-all duration-300 shadow-lg active:scale-95"
+      aria-label="Toggle Theme"
     >
-      {theme === "dark" ? <FaSun /> : <FaMoon />}
+      <div className="relative w-6 h-6 flex items-center justify-center">
+        {theme === "dark" ? (
+          <FaSun className="text-xl animate-in zoom-in duration-300" />
+        ) : (
+          <FaMoon className="text-xl animate-in zoom-in duration-300 text-gray-700" />
+        )}
+      </div>
     </button>
   );
 }
