@@ -67,20 +67,8 @@ const data = {
     {
       title: "E-commerce Platform",
       description: "Fully integrated shopping experience.",
-      image: "/images/portfolio1.jpg",
+      image: "./hero.jpg",
       link: "/portfolio/e-commerce-platform",
-    },
-    {
-      title: "Corporate Website",
-      description: "Modern corporate business website.",
-      image: "/images/portfolio2.jpg",
-      link: "/portfolio/corporate-website",
-    },
-    {
-      title: "Startup Landing Page",
-      description: "Minimal startup landing page design.",
-      image: "/images/portfolio3.jpg",
-      link: "/portfolio/startup-landing-page",
     },
   ],
 
@@ -110,7 +98,7 @@ export default function Home() {
       {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center">
         <Image
-          src="/hero.jpg"
+          src="./hero.jpg"
           alt="hero"
           fill
           className="object-cover"

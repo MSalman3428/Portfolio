@@ -79,15 +79,13 @@ const ServicesPage = () => {
       <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
         <div 
           className="absolute inset-0 bg-gray-900 "
-          style={{
-            backgroundImage: 'url(/services.jpg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundAttachment: 'fixed'
-          }}
+        style={{
+          backgroundImage: 'url(./services.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
         >
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/30"></div>
         </div>
 
         <motion.div 

@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { useTheme } from "next-themes";
+import { GitBranchIcon } from "lucide-react";
 
 const Footer = () => {
   const { theme, setTheme } = useTheme();
@@ -45,10 +46,8 @@ const Footer = () => {
 
         {/* SOCIAL */}
         <div className="flex gap-4 text-xl">
-          <FaFacebook className="hover:text-yellow-400 cursor-pointer" />
-          <FaTwitter className="hover:text-yellow-400 cursor-pointer" />
           <FaLinkedin className="hover:text-yellow-400 cursor-pointer" />
-          <FaInstagram className="hover:text-yellow-400 cursor-pointer" />
+          <GitBranchIcon className="hover:text-yellow-400 cursor-pointer" />
         </div>
       </div>
 
