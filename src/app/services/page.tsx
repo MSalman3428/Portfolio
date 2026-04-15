@@ -10,284 +10,194 @@ const ServicesPage = () => {
   // Animation variants
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.5
-      }
-    }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
   };
 
   const staggerContainer = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
   };
 
-  // Services data
   const services = [
     {
-      icon: <FaReact className="text-6xl text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />,
+      icon: <FaReact className="text-5xl text-blue-500 group-hover:text-blue-400 transition-colors" />,
       title: "React Development",
-      description: "Building fast, scalable, and responsive web applications using the latest React ecosystem.",
-      bg: "bg-blue-900/30",
-      hoverBg: "bg-blue-900/50"
+      description: "Building fast, scalable, and responsive web applications using the latest React ecosystem and Next.js.",
+      bg: "bg-blue-50 dark:bg-blue-900/20",
     },
     {
-      icon: <FaNodeJs className="text-6xl text-green-500 group-hover:text-green-400 transition-colors duration-300" />,
+      icon: <FaNodeJs className="text-5xl text-emerald-500 group-hover:text-emerald-400 transition-colors" />,
       title: "Node.js Development",
-      description: "Creating high-performance server-side applications with Node.js for real-time solutions.",
-      bg: "bg-green-900/30",
-      hoverBg: "bg-green-900/50"
+      description: "Creating high-performance server-side applications with Node.js for real-time, scalable solutions.",
+      bg: "bg-emerald-50 dark:bg-emerald-900/20",
     },
     {
-      icon: <SiMongodb className="text-6xl text-green-600 group-hover:text-green-500 transition-colors duration-300" />,
+      icon: <SiMongodb className="text-5xl text-green-600 group-hover:text-green-500 transition-colors" />,
       title: "Database Solutions",
-      description: "Expertise in MongoDB, PostgreSQL, and SQL databases for optimal data management.",
-      bg: "bg-green-800/30",
-      hoverBg: "bg-green-800/50"
+      description: "Expertise in MongoDB and SQL databases designed for high availability and optimal data management.",
+      bg: "bg-green-50 dark:bg-green-900/20",
     }
   ];
 
-  // Features data
   const features = [
     {
       icon: <FaTools />,
       title: "Expertise",
-      description: "Our team combines deep industry knowledge with hands-on experience to deliver top-tier digital solutions."
+      description: "Deep industry knowledge combined with hands-on experience to deliver top-tier digital solutions."
     },
     {
       icon: <FaLightbulb />,
       title: "Innovation",
-      description: "We apply innovative thinking and cutting-edge tools to keep your business ahead in a competitive market."
+      description: "Applying innovative thinking and modern tools to keep your business ahead of the competition."
     },
     {
       icon: <FaShieldAlt />,
       title: "Reliability",
-      description: "You can count on us for consistent quality, transparent communication, and on-time project delivery."
+      description: "Consistent quality, transparent communication, and strict adherence to project deadlines."
     }
   ];
 
   return (
-    <>
+    <div className="bg-white dark:bg-slate-950 text-slate-900 dark:text-white transition-colors duration-300">
+      
       {/* Hero Section */}
-      <section className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative w-full h-[85vh] flex items-center justify-center overflow-hidden">
         <div 
-          className="absolute inset-0 bg-gray-900 "
-        style={{
-          backgroundImage: 'url(./services.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'url(./services.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
         >
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/40"></div>
+          {/* Overlay that works for both modes visually */}
+          <div className="absolute inset-0 bg-slate-950/70 backdrop-brightness-50"></div>
         </div>
 
         <motion.div 
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
-          className="relative z-10 text-center px-6 py-12 md:px-12 w-full max-w-6xl"
+          className="relative z-10 text-center px-6 max-w-5xl"
         >
           <motion.h1 
             variants={fadeInUp}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent leading-tight"
+            className="text-5xl md:text-7xl font-extrabold mb-6 text-white leading-tight"
           >
-            We Craft Digital <span className="text-white">Solutions</span> That Matter
+            We Craft <span className="text-yellow-500">Digital Solutions</span> That Matter
           </motion.h1>
           
           <motion.p 
             variants={fadeInUp}
-            className="text-xl md:text-2xl max-w-3xl mx-auto text-gray-300 mb-8 leading-relaxed"
+            className="text-xl md:text-2xl max-w-3xl mx-auto text-slate-200 mb-10 leading-relaxed"
           >
-            Our services are designed to transform your vision into exceptional digital experiences that drive results.
+            Transforming your vision into exceptional digital experiences that drive real-world results.
           </motion.p>
           
-          <motion.div
-            variants={fadeInUp}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <Link 
-              href="#services" 
-              className="px-8 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black font-semibold rounded-lg hover:from-yellow-400 hover:to-yellow-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-yellow-500/30 flex items-center gap-2"
-            >
+          <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-5 justify-center">
+            <Link href="#services" className="px-8 py-4 bg-yellow-500 text-slate-900 font-bold rounded-full hover:bg-yellow-400 transition-all shadow-lg flex items-center justify-center gap-2">
               Explore Services <FaArrowRight />
             </Link>
-            <Link 
-              href="/contact" 
-              className="px-8 py-3 border-2 border-yellow-500 text-yellow-500 font-semibold rounded-lg hover:bg-yellow-500/10 transition-all duration-300 flex items-center gap-2"
-            >
+            <Link href="/contact" className="px-8 py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-slate-900 transition-all flex items-center justify-center gap-2">
               Contact Us <FaArrowRight />
             </Link>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5 }}
-            className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-          >
-            <div className="animate-bounce w-8 h-14 border-4 border-yellow-500 rounded-full flex justify-center">
-              <div className="w-1 h-3 bg-yellow-500 rounded-full mt-2"></div>
-            </div>
           </motion.div>
         </motion.div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-16 bg-gradient-to-b from-gray-900 to-[#1e1e1e] text-white">
-        <div className="container mx-auto px-4">
+      <section id="services" className="py-24 px-6">
+        <div className="max-w-7xl mx-auto">
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
-              Our Services
+            <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-bold mb-4">
+              Our <span className="text-yellow-600 dark:text-yellow-500">Expertise</span>
             </motion.h2>
-            <motion.div variants={fadeInUp} className="w-20 h-1 bg-yellow-500 mx-auto mb-8"></motion.div>
-            <motion.p variants={fadeInUp} className="text-lg sm:text-xl mb-8 max-w-3xl mx-auto text-gray-300 leading-relaxed">
-              We specialize in delivering high-quality software solutions, expert consulting for cutting-edge technologies, 
-              and tailored training programs to keep you ahead in the digital landscape.
-            </motion.p>
+            <motion.div variants={fadeInUp} className="w-20 h-1.5 bg-yellow-500 mx-auto rounded-full mb-8"></motion.div>
           </motion.div>
 
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="flex flex-wrap justify-center gap-8 lg:gap-12"
-          >
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-10">
             {services.map((service, index) => (
               <motion.div 
                 key={index}
                 variants={fadeInUp}
-                className="group relative p-8 rounded-xl w-80 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 hover:border-yellow-500 transition-all duration-300 hover:-translate-y-2 shadow-lg hover:shadow-xl hover:shadow-yellow-500/10"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="group p-10 rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-yellow-500 transition-all duration-300 shadow-sm hover:shadow-xl"
               >
-                <div className="absolute inset-0 rounded-xl bg-yellow-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                <div className="flex justify-center items-center mb-6">
-                  <div className={`p-4 ${service.bg} rounded-full group-hover:${service.hoverBg} transition-colors duration-300`}>
-                    {service.icon}
-                  </div>
+                <div className={`w-20 h-20 flex items-center justify-center mb-8 rounded-3xl ${service.bg} transition-transform group-hover:scale-110`}>
+                  {service.icon}
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-center text-white group-hover:text-yellow-400 transition-colors duration-300">
-                  {service.title}
-                </h3>
-                <p className="text-gray-400 text-center group-hover:text-gray-300 transition-colors duration-300">
+                <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                   {service.description}
                 </p>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-16 bg-gradient-to-b from-[#1e1e1e]  to-gray-900 text-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="text-center mb-12"
-          >
-            <motion.h2 variants={fadeInUp} className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
-              Why Choose Us
-            </motion.h2>
-            <motion.p variants={fadeInUp} className="text-lg text-gray-300 max-w-3xl mx-auto">
-              Fast, high-quality results with client satisfaction as our top priority.
-            </motion.p>
+      <section className="py-24 bg-slate-50 dark:bg-slate-900/40 px-6 border-y border-slate-100 dark:border-slate-900">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+          <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" className="relative">
+             <div className="absolute -inset-4 bg-yellow-500/20 rounded-[2rem] blur-2xl"></div>
+             <Image 
+                src="./darkexper.jpg" 
+                alt="Expertise" 
+                width={600}
+                height={600}
+                className="relative rounded-[2rem] shadow-2xl object-cover"
+              />
           </motion.div>
 
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="grid md:grid-cols-2 gap-12 items-center"
-          >
-            <motion.div variants={fadeInUp} className="flex justify-center">
-              <div className="w-full max-w-md rounded-xl shadow-lg overflow-hidden">
-                <Image 
-                  src="./darkexper.jpg" 
-                  alt="Why Choose Us" 
-                  width={500}
-                  height={500}
-                  className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
+          <div className="space-y-10">
+            <motion.div initial={{opacity: 0}} whileInView={{opacity: 1}}>
+              <h2 className="text-4xl font-bold mb-4">Why Work <span className="text-yellow-600 dark:text-yellow-500">With Me</span></h2>
+              <p className="text-slate-600 dark:text-slate-400">Fast, high-quality results with your satisfaction as the top priority.</p>
             </motion.div>
 
-            <motion.div variants={staggerContainer} className="space-y-8">
+            <div className="space-y-8">
               {features.map((item, index) => (
-                <motion.div 
-                  key={index}
-                  variants={fadeInUp}
-                  className="flex items-start gap-6 p-6 bg-gray-800/50 rounded-xl hover:bg-gray-800/70 transition-colors duration-300"
-                >
-                  <div className="text-yellow-400 text-3xl mt-1 flex-shrink-0">
+                <div key={index} className="flex items-start gap-6 group">
+                  <div className="text-yellow-600 dark:text-yellow-500 text-3xl p-3 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 group-hover:scale-110 transition-transform">
                     {item.icon}
                   </div>
                   <div>
-                    <h3 className="text-2xl font-semibold mb-2">{item.title}</h3>
-                    <p className="text-gray-400">{item.description}</p>
+                    <h3 className="text-xl font-bold mb-1">{item.title}</h3>
+                    <p className="text-slate-500 dark:text-slate-400 leading-relaxed">{item.description}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="relative w-full h-[80vh] overflow-hidden">
-        <div className="absolute inset-0 bg-gray-800">
-          <Image
-            src="./conact.jpg"
-            alt="Collaboration Background"
-            fill
-            priority
-            className="object-cover"
-          />
+      <section className="relative w-full h-[60vh] flex items-center justify-center px-6">
+        <div className="absolute inset-0 overflow-hidden">
+          <Image src="./conact.jpg" alt="Contact" fill className="object-cover scale-110 brightness-50" />
+          <div className="absolute inset-0 bg-slate-950/60"></div>
         </div>
-        <div className="absolute inset-0 bg-black/50 flex items-center justify-center px-4">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="text-center max-w-4xl"
-          >
-            <motion.h3 variants={fadeInUp} className="text-lg sm:text-xl md:text-2xl font-medium text-gray-300 mb-2">
-              — Let's Create Something Extraordinary
-            </motion.h3>
-            <motion.h2 variants={fadeInUp} className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6 bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
-              Ready to Bring Your Vision to Life?
-            </motion.h2>
-            <motion.p variants={fadeInUp} className="text-lg sm:text-xl mb-8 max-w-2xl mx-auto text-gray-300">
-              I'm passionate about collaborating on innovative projects. Whether you need a complete solution or expert consultation, let's discuss how we can work together to build something remarkable.
-            </motion.p>
-            <motion.div variants={fadeInUp}>
-              <Link 
-                href="/contact" 
-                className="inline-block mt-6 px-8 py-3 rounded-lg text-lg font-semibold border-2 transition-all duration-300 hover:scale-105 bg-transparent text-white border-white hover:bg-white hover:text-gray-900"
-              >
-                Start a Conversation <FaArrowRight className="inline ml-2" />
-              </Link>
-            </motion.div>
-          </motion.div>
+        <div className="relative z-10 text-center max-w-4xl">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">Ready to Bring Your Vision to Life?</h2>
+          <p className="text-lg text-slate-200 mb-10 max-w-2xl mx-auto">
+            I'm passionate about collaborating on innovative projects. Let's build something remarkable together.
+          </p>
+          <Link href="/contact" className="px-10 py-4 bg-white text-slate-900 font-bold rounded-full hover:bg-yellow-500 transition-all duration-300 shadow-xl inline-flex items-center gap-2">
+             Start a Conversation <FaArrowRight />
+          </Link>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 
