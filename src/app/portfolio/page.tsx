@@ -7,6 +7,7 @@ import { ArrowRight } from 'lucide-react';
 import { FiMail as EnvelopeIcon } from 'react-icons/fi';
 import { FaLinkedin as LinkedInIcon, FaGithub as GitHubIcon } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { HeroDepth, TiltCard } from '../components/DepthEffects';
 
 const Portfolio = () => {
   return (
@@ -16,12 +17,13 @@ const Portfolio = () => {
       <section
         className="relative w-full min-h-[85vh] flex items-center justify-center overflow-hidden"
         style={{
-          backgroundImage: 'url(./portfolio1.jpg)',
+          backgroundImage: 'url(/portfolio1.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
         <div className="absolute inset-0 bg-slate-950/70 backdrop-brightness-75"></div>
+        <HeroDepth />
         
         <div className="relative z-10 text-center text-white px-6 py-16 md:px-12 max-w-6xl mx-auto">
           <motion.h1 
@@ -83,39 +85,62 @@ const Portfolio = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-4 italic">Portfolio <span className="text-yellow-600 dark:text-yellow-500">Showcase</span></h2>
             <div className="h-1.5 w-24 bg-yellow-500 mx-auto rounded-full mb-6"></div>
             <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
-              Highlighted projects where innovative solutions met business excellence.
+              Full-stack applications and web solutions built with modern technologies.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {[
               {
-                title: "Luxury Fashion Marketplace",
-                cat: "E-Commerce Development",
-                img: "./ecommerce-project.jpg",
-                desc: "Built a high-conversion WooCommerce platform with custom payment integrations.",
-                tags: ["WooCommerce", "React", "Node.js"]
-              },
-              {
-                title: "Enterprise SaaS Platform",
-                cat: "Web Application",
-                img: "/webapp-project.jpg",
-                desc: "Developed a scalable business management solution with real-time analytics.",
-                tags: ["MERN Stack", "GraphQL", "AWS"]
-              },
-              {
-                title: "News Media Portal",
-                cat: "WordPress Development",
-                img: "/wordpress-project.jpg",
-                desc: "Created a high-performance news website with custom plugins for monetization.",
-                tags: ["WordPress", "PHP", "MySQL"]
-              }
+                  title: "ChatApp",
+                  cat: "Real-Time Web Application",
+                  img: "/portfolio1.jpg",
+                  desc: "Developed a real-time communication application with responsive UI, messaging functionality, database operations, JavaScript, Node.js, and Socket.IO. Worked on application enhancements, debugging, testing, and performance improvements.",
+                  tags: ["Oracle APEX", "Node.js", "Socket.IO", "JavaScript", "SQL", "PL/SQL"],
+                  links: [{ label: "GitHub", href: "https://github.com/MSalman3428/chatApp" }]
+                },
+                {
+                  title: "AdEverywhere",
+                  cat: "Full-Stack Web Application / University Final Year Project",
+                  img: "/portfolio1.jpg",
+                  desc: "Worked as a Full-Stack Developer, developing frontend and backend features, REST APIs, authentication, database operations, deployment, Git/GitHub, and CI/CD. Contributed to responsive, scalable, and reliable application functionality.",
+                  tags: ["React.js", "Node.js", "Express.js", "MongoDB", "REST APIs", "Git", "CI/CD"],
+                  links: [{ label: "Live Demo", href: "https://ad-everywhere.vercel.app/" }]
+                },
+                {
+                  title: "RentBraker",
+                  cat: "Full-Stack Rental Management Application",
+                  img: "/portfolio1.jpg",
+                  desc: "Developed a full-stack rental management web application with responsive UI, backend APIs, authentication, database integration, testing, debugging, Git/GitHub, and deployment.",
+                  tags: ["React.js", "Node.js", "Express.js", "MongoDB", "REST APIs", "Git/GitHub"],
+                  links: []
+                },
+                {
+                  title: "XRun",
+                  cat: "Freelance Full-Stack Development",
+                  img: "/portfolio1.jpg",
+                  desc: "Developed responsive frontend interfaces, backend APIs, authentication, database integration, application functionality, testing, debugging, deployment, and performance improvements based on client requirements.",
+                  tags: ["React.js", "Node.js", "Express.js", "MongoDB", "REST APIs"],
+                  links: [{ label: "Live Website", href: "https://www.xrun.se/" }]
+                },
+                {
+                  title: "NotificationSimple",
+                  cat: "Oracle APEX Application",
+                  img: "/portfolio1.jpg",
+                  desc: "Developed and customized an Oracle APEX application using Oracle Database, SQL, PL/SQL, and JavaScript. Worked on pages, forms, reports, validations, dynamic actions, application processes, database operations, debugging, testing, and UI enhancements.",
+                  tags: ["Oracle APEX", "Oracle Database", "SQL", "PL/SQL", "JavaScript"],
+                  links: [{ label: "GitHub", href: "https://github.com/MSalman3428/notificationSimple" }]
+                },
+                {
+                  title: "Personal Portfolio",
+                  cat: "MERN Stack",
+                  img: "/portfolio1.jpg",
+                  desc: "Developed a full-stack personal portfolio using React.js, Node.js, Express.js, and MongoDB with responsive UI, backend APIs, database integration, Git/GitHub, deployment, testing, and performance optimization.",
+                  tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Git/GitHub"],
+                  links: [{ label: "Live Portfolio", href: "https://msalman3428.github.io/Portfolio/" }]
+                }
             ].map((proj, idx) => (
-              <motion.div 
-                key={idx}
-                whileHover={{ y: -10 }}
-                className="bg-slate-50 dark:bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-2xl transition-all duration-500"
-              >
+              <TiltCard key={idx} className="bg-slate-50 dark:bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-2xl transition-all duration-500">
                 <div className="h-64 overflow-hidden relative">
                   <Image src={proj.img} alt={proj.title} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 </div>
@@ -132,11 +157,14 @@ const Portfolio = () => {
                       </span>
                     ))}
                   </div>
-                  <Link href="#" className="text-slate-900 dark:text-white font-bold flex items-center gap-2 hover:text-yellow-600 dark:hover:text-yellow-500 transition-colors">
-                    View Case Study <ArrowRight size={18} />
-                  </Link>
+                  {proj.links.length > 0 && proj.links.map((link) => (
+                    <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="text-slate-900 dark:text-white font-bold inline-flex items-center gap-2 mr-5 hover:text-yellow-600 dark:hover:text-yellow-500 transition-colors">
+                      {link.label} <ArrowRight size={18} />
+                    </a>
+                  ))}
+                  {proj.links.length === 0 && <span className="text-slate-500 dark:text-slate-400 font-semibold">Private Project</span>}
                 </div>
-              </motion.div>
+              </TiltCard>
             ))}
           </div>
         </div>
@@ -175,11 +203,11 @@ const Portfolio = () => {
                   <EnvelopeIcon className="w-6 h-6" />
                   <span className="font-bold">Email</span>
                 </a>
-                <a href="https://linkedin.com/in/muhammad-salman-858247306/" target="_blank" className="group flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all">
+                <a href="https://linkedin.com/in/muhammad-salman-858247306" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all">
                   <LinkedInIcon className="w-6 h-6" />
                   <span className="font-bold">LinkedIn</span>
                 </a>
-                <a href="https://github.com/MSalman3428" target="_blank" className="group flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">
+                <a href="https://github.com/MSalman3428" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">
                   <GitHubIcon className="w-6 h-6" />
                   <span className="font-bold">GitHub</span>
                 </a>

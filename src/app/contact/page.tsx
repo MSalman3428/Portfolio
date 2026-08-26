@@ -78,14 +78,14 @@ const Contact = () => {
                   <FiMail className="text-2xl text-yellow-500" />
                   <div>
                     <p className="font-semibold">Email</p>
-                    <p className="text-gray-600 dark:text-gray-400">msalman3428@gmail.com</p>
+                    <a href="mailto:msalman3428@gmail.com" className="text-gray-600 dark:text-gray-400 hover:text-yellow-500 transition-colors">Email Me</a>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
                   <FiPhone className="text-2xl text-yellow-500" />
                   <div>
                     <p className="font-semibold">Phone</p>
-                    <p className="text-gray-600 dark:text-gray-400">03225132468</p>
+                    <a href="tel:+923225132468" className="text-gray-600 dark:text-gray-400 hover:text-yellow-500 transition-colors">Call Me</a>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -93,6 +93,20 @@ const Contact = () => {
                   <div>
                     <p className="font-semibold">Location</p>
                     <p className="text-gray-600 dark:text-gray-400">Islamabad, Pakistan</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <FiMail className="text-2xl text-yellow-500" />
+                  <div>
+                    <p className="font-semibold">LinkedIn</p>
+                    <a href="https://linkedin.com/in/muhammad-salman-858247306" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-yellow-500 transition-colors">LinkedIn</a>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <FiMail className="text-2xl text-yellow-500" />
+                  <div>
+                    <p className="font-semibold">GitHub</p>
+                    <a href="https://github.com/MSalman3428" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-yellow-500 transition-colors">GitHub</a>
                   </div>
                 </div>
               </div>

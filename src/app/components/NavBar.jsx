@@ -39,7 +39,7 @@ const NavBar = () => {
           >
             <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-yellow-500 shadow-md">
               <Image
-                src="./darklogo.png"
+                src="/darklogo.png"
                 alt="logo"
                 fill
                 className="object-cover"

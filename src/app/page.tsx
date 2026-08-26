@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FaReact, FaNodeJs, FaTools, FaLightbulb, FaShieldAlt, FaArrowRight } from "react-icons/fa";
 import { SiMysql, SiMongodb, SiJavascript } from "react-icons/si";
 import { motion } from "framer-motion";
+import { HeroDepth, TiltCard } from "./components/DepthEffects";
 
 const animations = {
   fadeInUp: {
@@ -19,11 +20,11 @@ const animations = {
 
 const data = {
   technologies: [
-    { icon: <FaReact size={45} />, name: "React", color: "text-blue-500" },
-    { icon: <FaNodeJs size={45} />, name: "Node.js", color: "text-emerald-500" },
-    { icon: <SiMongodb size={45} />, name: "MongoDB", color: "text-green-600" },
-    { icon: <SiMysql size={45} />, name: "MySQL", color: "text-sky-600" },
-    { icon: <SiJavascript size={45} />, name: "JavaScript", color: "text-amber-400" },
+    { icon: <FaReact size={45} />, name: "React.js, Next.js, JavaScript, HTML5, CSS3, Bootstrap, Tailwind CSS", color: "text-blue-500" },
+    { icon: <FaNodeJs size={45} />, name: "Node.js, Express.js, REST APIs, Socket.IO, Oracle APEX", color: "text-emerald-500" },
+    { icon: <SiMongodb size={45} />, name: "MongoDB, MySQL, Oracle Database, SQL, PL/SQL", color: "text-green-600" },
+    { icon: <FaTools size={45} />, name: "Git, GitHub, Postman", color: "text-sky-600" },
+    { icon: <SiJavascript size={45} />, name: "AWS (EC2, S3, IAM), Docker (Basic), Kubernetes (Basic), CI/CD", color: "text-amber-400" },
   ],
   services: [
     { icon: <FaReact size={50} />, title: "React Development", description: "Building fast, scalable, and responsive web applications with modern hooks.", color: "text-blue-600 dark:text-blue-400" },
@@ -31,7 +32,7 @@ const data = {
     { icon: <SiMongodb size={50} />, title: "Database Solutions", description: "Architecting scalable data structures with MongoDB and SQL.", color: "text-green-600 dark:text-green-400" },
   ],
   projects: [
-    { title: "E-commerce Platform", description: "A seamless, secure, and fully integrated digital shopping experience.", image: "./hero.jpg", link: "/portfolio/e-commerce-platform" },
+    { title: "ChatApp", description: "Real-time communication application with responsive UI, messaging functionality, database operations, Node.js, and Socket.IO.", image: "/hero.jpg", link: "https://github.com/MSalman3428/chatApp" },
   ],
 };
 
@@ -41,14 +42,18 @@ export default function Home() {
       
       {/* HERO SECTION */}
       <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
-        <Image src="./hero.jpg" alt="hero" fill className="object-cover scale-105" priority />
+        <Image src="/hero.jpg" alt="hero" fill className="object-cover scale-105" priority />
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-transparent" />
+        <HeroDepth />
         
         <motion.div initial="hidden" animate="visible" variants={animations.staggerContainer} className="relative text-center px-6 text-white max-w-5xl">
           <motion.h3 variants={animations.fadeInUp} className="text-yellow-400 font-medium tracking-[0.3em] uppercase text-sm mb-6">— Muhammad Salman —</motion.h3>
           <motion.h1 variants={animations.fadeInUp} className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight">
-            Software Engineer Building <span className="text-yellow-400">Modern</span> Web Applications
+            MERN Stack Developer Building <span className="text-yellow-400">Modern</span> Web Applications
           </motion.h1>
+          <motion.p variants={animations.fadeInUp} className="mt-6 text-lg md:text-xl text-slate-200 max-w-4xl mx-auto leading-relaxed">
+            MERN Stack Developer with hands-on experience building responsive full-stack web applications using React.js, Next.js, Node.js, Express.js, MongoDB, and MySQL. Experienced in REST APIs, real-time applications, Oracle APEX, Git/GitHub, deployment, and AWS/DevOps concepts including CI/CD.
+          </motion.p>
           <motion.div variants={animations.fadeInUp} className="mt-10">
             <Link href="/contact" className="group bg-yellow-500 hover:bg-yellow-400 text-slate-900 px-10 py-4 rounded-full font-bold flex items-center gap-3 w-fit mx-auto transition-all shadow-lg hover:shadow-yellow-500/20 active:scale-95">
               Contact Me <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -66,14 +71,10 @@ export default function Home() {
         
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           {data.technologies.map((t, i) => (
-            <motion.div 
-              whileHover={{ y: -5 }}
-              key={i} 
-              className="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 p-8 rounded-3xl text-center shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-none hover:border-yellow-500/50 transition-all"
-            >
+            <TiltCard key={i} className="bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 p-8 rounded-3xl text-center shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-none hover:border-yellow-500/50 transition-all">
               <div className={`${t.color} mb-4 flex justify-center opacity-90`}>{t.icon}</div>
               <h3 className="font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider text-xs">{t.name}</h3>
-            </motion.div>
+            </TiltCard>
           ))}
         </div>
       </section>
@@ -103,7 +104,7 @@ export default function Home() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {data.projects.map((p, i) => (
-            <div key={i} className="group relative bg-white dark:bg-slate-900 rounded-[2rem] overflow-hidden shadow-md border border-slate-200 dark:border-slate-800">
+            <TiltCard key={i} className="group relative bg-white dark:bg-slate-900 rounded-[2rem] overflow-hidden shadow-md border border-slate-200 dark:border-slate-800">
               <div className="relative h-64 w-full overflow-hidden">
                 <Image src={p.image} alt={p.title} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -111,11 +112,11 @@ export default function Home() {
               <div className="p-8">
                 <h3 className="text-2xl font-bold group-hover:text-yellow-600 dark:group-hover:text-yellow-500 transition-colors">{p.title}</h3>
                 <p className="text-slate-500 dark:text-slate-400 mt-3 line-clamp-2">{p.description}</p>
-                <Link href={p.link} className="mt-6 inline-flex items-center gap-2 font-bold text-sm uppercase tracking-widest text-slate-800 dark:text-slate-200 hover:text-yellow-600 dark:hover:text-yellow-500 transition-colors">
-                  Explore Case Study <FaArrowRight size={12} />
-                </Link>
+                <a href={p.link} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 font-bold text-sm uppercase tracking-widest text-slate-800 dark:text-slate-200 hover:text-yellow-600 dark:hover:text-yellow-500 transition-colors">
+                  GitHub <FaArrowRight size={12} />
+                </a>
               </div>
-            </div>
+            </TiltCard>
           ))}
         </div>
       </section>
