@@ -133,30 +133,20 @@ export default function Home() {
         {/* HERO SECTION CONTAINER */}
         <div className="relative min-h-[92vh] flex items-center justify-center overflow-hidden">
 
-          {/* LAYER 10: CUTOUT HERO SUBJECT (PERFECT CENTER) */}
-          <div className="pointer-events-none absolute inset-0 m-auto z-10 flex items-end justify-center overflow-hidden w-full max-w-4xl h-[65vh] sm:h-[75vh] md:h-[82vh]">
+          {/* LAYER 10: CUTOUT HERO SUBJECT */}
+          <div className="pointer-events-none absolute inset-0 m-auto z-10 flex items-end justify-center overflow-hidden w-full max-w-5xl h-[75vh] sm:h-[85vh] md:h-[92vh]">
             <motion.div
-                initial={{ opacity: 0, y: 50, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
+                initial={{ opacity: 0, y: 30, scale: 1.05 }}
+                animate={{ opacity: 1, y: 0, scale: 1.15 }}
                 transition={{ duration: 0.9, ease: "easeOut" }}
-                className="relative h-full w-full pointer-events-auto flex items-end justify-center"
+                className="relative h-full w-full pointer-events-auto flex items-end justify-center -translate-y-6 sm:-translate-y-10 md:-translate-y-12"
             >
-              {/* Light Mode Cutout Image */}
               <Image
-                  src="/salman-lightbg.png"
+                  src="/salman-both.png"
                   alt="Muhammad Salman"
                   fill
-                  sizes="(max-width: 768px) 100vw, 80vw"
-                  className="object-contain object-bottom "
-                  priority
-              />
-              {/* Dark Mode Cutout Image */}
-              <Image
-                  src="/salman-darkbg.png"
-                  alt="Muhammad Salman"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 80vw"
-                  className="object-contain object-bottom hidden dark:block"
+                  sizes="(max-width: 768px) 100vw, 90vw"
+                  className="object-contain object-bottom filter contrast-105  drop-shadow-[0_20px_40px_rgba(1,1,1,1.1)] dark:drop-shadow-[0_25px_60px_rgba(1,1,1,1.25)]"
                   priority
               />
             </motion.div>
