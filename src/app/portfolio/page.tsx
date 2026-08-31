@@ -1,223 +1,358 @@
 "use client";
 
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
-import { FiMail as EnvelopeIcon } from 'react-icons/fi';
-import { FaLinkedin as LinkedInIcon, FaGithub as GitHubIcon } from 'react-icons/fa';
-import { motion } from 'framer-motion';
-import { HeroDepth, TiltCard } from '../components/DepthEffects';
+import React, { useState } from "react";
+import Image from "next/image";
+import dynamic from "next/dynamic";
+import { motion, AnimatePresence } from "framer-motion";
+import ThinkDesignHeading from "../components/ThinkDesignHeading";
+import {
+  FaGithub,
+  FaExternalLinkAlt,
+  FaCheckCircle,
+} from "react-icons/fa";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiMysql,
+  SiTailwindcss,
+  SiSocketdotio,
+} from "react-icons/si";
 
-const Portfolio = () => {
+const Background3D = dynamic(() => import("../components/Background3D"), {
+  ssr: false,
+});
+
+interface Project {
+  id: string;
+  title: string;
+  category: "Full Stack" | "Enterprise" | "Freelance" | "Cloud & DevOps";
+  subtitle: string;
+  description: string;
+  longDescription: string;
+  image: string;
+  tags: string[];
+  techIcons: React.ReactNode[];
+  features: string[];
+  liveUrl?: string;
+  githubUrl?: string;
+  role: string;
+  duration: string;
+}
+
+const projectsData: Project[] = [
+  {
+    id: "adeverywhere",
+    title: "AdEverywhere Platform",
+    category: "Full Stack",
+    subtitle: "University Final Year Project (FYP)",
+    description:
+        "A comprehensive digital advertising platform facilitating real-time ad placements, campaign analytics, and dynamic content scheduling.",
+    longDescription:
+        "AdEverywhere simplifies outdoor and digital ad asset management. Built with a robust MERN stack backend, it exposes modular REST APIs for ad publishing, dynamic geo-targeting, and schedule verification. Integrates automated CI/CD pipelines to streamline deployment workflows.",
+    image: "/Projects/AdEverywherverProject.png",
+    tags: ["React", "Node.js", "Express", "MongoDB", "AWS", "CI/CD"],
+    techIcons: [
+      <SiReact key="react" className="text-cyan-400" />,
+      <SiNodedotjs key="node" className="text-emerald-500" />,
+      <SiExpress key="express" className="text-slate-300" />,
+      <SiMongodb key="mongo" className="text-green-500" />,
+    ],
+    features: [
+      "Role-based authorization for advertisers and display publishers",
+      "Real-time ad scheduling engine with collision prevention",
+      "Automated CI/CD pipeline integrated with GitHub Actions",
+      "Dynamic reporting dashboard with graphical analytics",
+    ],
+    githubUrl: "https://github.com/MSalman3428",
+    role: "Lead Full-Stack Developer",
+    duration: "4 Months",
+  },
+  {
+    id: "xrun",
+    title: "XRun Fitness & Tracking Platform",
+    category: "Freelance",
+    subtitle: "Freelance Web Application",
+    description:
+        "High-performance client dashboard and activity monitor built for real-time fitness metrics and user progress tracking.",
+    longDescription:
+        "XRun provides athletes and trainers with intuitive web tools to monitor performance. Designed with modern UI/UX principles, Next.js App Router, dynamic data fetching, and high-speed MongoDB indexing for scalable activity logging.",
+    image: "/Projects/xrunProject.png",
+    tags: ["Next.js", "Tailwind CSS", "MongoDB", "Express", "Node.js"],
+    techIcons: [
+      <SiNextdotjs key="next" className="text-white" />,
+      <SiTailwindcss key="tailwind" className="text-cyan-400" />,
+      <SiNodedotjs key="node" className="text-emerald-500" />,
+      <SiMongodb key="mongo" className="text-green-500" />,
+    ],
+    features: [
+      "Responsive metric visualization with interactive charts",
+      "Custom RESTful APIs for route optimization & duration analytics",
+      "Secure JWT authentication with refresh token rotation",
+      "Dark mode first design system using Tailwind CSS",
+    ],
+    githubUrl: "https://github.com/MSalman3428",
+    role: "Full-Stack Developer",
+    duration: "2 Months",
+  },
+  {
+    id: "chatapp-sehat",
+    title: "Sehat Sahulat Real-Time Chat System",
+    category: "Enterprise",
+    subtitle: "Sehat Sahulat Program Infrastructure",
+    description:
+        "Enterprise real-time communication platform supporting multi-department healthcare coordination and instant file sharing.",
+    longDescription:
+        "Developed during internship work at Sehat Sahulat Program. This enterprise system ensures instant exchange of information between hospital administrators and field supervisors using Socket.IO, backed by Oracle/MySQL database procedures.",
+    image: "/light.jpg",
+    tags: ["Node.js", "Socket.IO", "MySQL", "Oracle APEX", "Express"],
+    techIcons: [
+      <SiNodedotjs key="node" className="text-emerald-500" />,
+      <SiSocketdotio key="socket" className="text-slate-200" />,
+      <SiMysql key="mysql" className="text-sky-500" />,
+      <SiExpress key="express" className="text-slate-300" />,
+    ],
+    features: [
+      "Low-latency bi-directional messaging powered by Socket.IO websockets",
+      "Department-level group rooms with active presence detection",
+      "Message persistence linked with SQL relational schemas",
+      "Optimized payload streaming for media attachments",
+    ],
+    role: "Backend & Web Intern Developer",
+    duration: "3 Months",
+  },
+  {
+    id: "rent-braker",
+    title: "Rent Braker Portal",
+    category: "Freelance",
+    subtitle: "Property & Rental Management System",
+    description:
+        "Automated tenant ledger, payment processing UI, and lease tracking portal built for property operators.",
+    longDescription:
+        "Rent Braker replaces manual property spreadsheets with a cohesive dashboard interface. Handles lease schedules, maintenance ticketing, and revenue aggregation through customized REST endpoints and database routines.",
+    image: "/light.jpg",
+    tags: ["React", "Node.js", "Express", "MySQL", "Tailwind CSS"],
+    techIcons: [
+      <SiReact key="react" className="text-cyan-400" />,
+      <SiNodedotjs key="node" className="text-emerald-500" />,
+      <SiMysql key="mysql" className="text-sky-500" />,
+      <SiTailwindcss key="tailwind" className="text-cyan-400" />,
+    ],
+    features: [
+      "Automated rent invoice calculation and ledger tracking",
+      "Tenant issue resolution ticketing interface",
+      "Relational database design normalized for financial history",
+      "Responsive interface optimized for tablet and desktop views",
+    ],
+    githubUrl: "https://github.com/MSalman3428",
+    role: "Full-Stack Developer",
+    duration: "2 Months",
+  },
+];
+
+const categories = ["All", "Full Stack", "Enterprise", "Freelance"];
+
+export default function PortfolioPage() {
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  const filteredProjects =
+      activeCategory === "All"
+          ? projectsData
+          : projectsData.filter((p) => p.category === activeCategory);
+
   return (
-    <div className="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
-      
-      {/* HERO SECTION */}
-      <section
-        className="relative w-full min-h-[85vh] flex items-center justify-center overflow-hidden"
-        style={{
-          backgroundImage: 'url(/portfolio1.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="absolute inset-0 bg-slate-950/70 backdrop-brightness-75"></div>
-        <HeroDepth />
-        
-        <div className="relative z-10 text-center text-white px-6 py-16 md:px-12 max-w-6xl mx-auto">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-7xl font-extrabold mb-8 leading-tight"
-          >
-            Full-Stack Development & <br/>
-            <span className="text-yellow-400">E-Commerce Solutions</span>
-          </motion.h1>
-          
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="text-xl md:text-2xl mb-10 text-slate-200 max-w-4xl mx-auto leading-relaxed"
-          >
-            I deliver cutting-edge web solutions that combine technical excellence with strategic business insights.
-          </motion.p>
-          
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4 }}
-            className="bg-white/10 dark:bg-black/40 backdrop-blur-md p-8 md:p-10 rounded-[2.5rem] border border-white/20 max-w-4xl mx-auto shadow-2xl"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-yellow-400 uppercase tracking-widest text-sm">
-              Specializations
-            </h2>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-12 text-lg text-left">
-              {[
-                "Custom full-stack development",
-                "WordPress/WooCommerce architecture",
-                "Premium theme implementation",
-                "Legacy system modernization",
-                "Performance optimization",
-                "Ongoing maintenance & support"
-              ].map((item, i) => (
-                <li key={i} className="flex items-center gap-3">
-                  <span className="w-2 h-2 bg-yellow-400 rounded-full shrink-0" />
-                  <span className="text-slate-100 font-medium">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+      <div className="relative min-h-screen bg-[#fcfcfd]/90 dark:bg-slate-950/90 text-slate-900 dark:text-slate-100 transition-colors duration-500 py-20 px-4 sm:px-6 overflow-hidden backdrop-blur-sm">
+        <Background3D />
 
-          <div className="mt-12">
-            <Link href="#showcase" className="inline-flex items-center gap-2 px-10 py-4 bg-yellow-500 hover:bg-yellow-400 text-slate-900 text-xl font-bold rounded-full transition-all shadow-lg hover:shadow-yellow-500/20 active:scale-95">
-              View Case Studies <ArrowRight size={20} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* PORTFOLIO SHOWCASE */}
-      <section id="showcase" className="py-24 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 italic">Portfolio <span className="text-yellow-600 dark:text-yellow-500">Showcase</span></h2>
-            <div className="h-1.5 w-24 bg-yellow-500 mx-auto rounded-full mb-6"></div>
-            <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
-              Full-stack applications and web solutions built with modern technologies.
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* HEADER SECTION */}
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-xs font-mono uppercase tracking-widest text-yellow-500 bg-yellow-500/10 px-4 py-1.5 rounded-full border border-yellow-500/20 backdrop-blur-md">
+              Selected Work
+            </span>
+            <ThinkDesignHeading as="h1" className="text-4xl sm:text-5xl font-extrabold mt-6 mb-4 tracking-tight font-heading">
+              Projects & <span className="text-yellow-500">Case Studies</span>
+            </ThinkDesignHeading>
+            <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg font-sans leading-relaxed">
+              A showcase of web applications, microservices, enterprise systems, and database engineering solutions built across full-stack contracts and university initiatives.
             </p>
+            <div className="h-1.5 w-20 bg-yellow-500 rounded-full mx-auto mt-6"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {[
-              {
-                  title: "ChatApp",
-                  cat: "Real-Time Web Application",
-                  img: "/portfolio1.jpg",
-                  desc: "Developed a real-time communication application with responsive UI, messaging functionality, database operations, JavaScript, Node.js, and Socket.IO. Worked on application enhancements, debugging, testing, and performance improvements.",
-                  tags: ["Oracle APEX", "Node.js", "Socket.IO", "JavaScript", "SQL", "PL/SQL"],
-                  links: [{ label: "GitHub", href: "https://github.com/MSalman3428/chatApp" }]
-                },
-                {
-                  title: "AdEverywhere",
-                  cat: "Full-Stack Web Application / University Final Year Project",
-                  img: "/portfolio1.jpg",
-                  desc: "Worked as a Full-Stack Developer, developing frontend and backend features, REST APIs, authentication, database operations, deployment, Git/GitHub, and CI/CD. Contributed to responsive, scalable, and reliable application functionality.",
-                  tags: ["React.js", "Node.js", "Express.js", "MongoDB", "REST APIs", "Git", "CI/CD"],
-                  links: [{ label: "Live Demo", href: "https://ad-everywhere.vercel.app/" }]
-                },
-                {
-                  title: "RentBraker",
-                  cat: "Full-Stack Rental Management Application",
-                  img: "/portfolio1.jpg",
-                  desc: "Developed a full-stack rental management web application with responsive UI, backend APIs, authentication, database integration, testing, debugging, Git/GitHub, and deployment.",
-                  tags: ["React.js", "Node.js", "Express.js", "MongoDB", "REST APIs", "Git/GitHub"],
-                  links: []
-                },
-                {
-                  title: "XRun",
-                  cat: "Freelance Full-Stack Development",
-                  img: "/portfolio1.jpg",
-                  desc: "Developed responsive frontend interfaces, backend APIs, authentication, database integration, application functionality, testing, debugging, deployment, and performance improvements based on client requirements.",
-                  tags: ["React.js", "Node.js", "Express.js", "MongoDB", "REST APIs"],
-                  links: [{ label: "Live Website", href: "https://www.xrun.se/" }]
-                },
-                {
-                  title: "NotificationSimple",
-                  cat: "Oracle APEX Application",
-                  img: "/portfolio1.jpg",
-                  desc: "Developed and customized an Oracle APEX application using Oracle Database, SQL, PL/SQL, and JavaScript. Worked on pages, forms, reports, validations, dynamic actions, application processes, database operations, debugging, testing, and UI enhancements.",
-                  tags: ["Oracle APEX", "Oracle Database", "SQL", "PL/SQL", "JavaScript"],
-                  links: [{ label: "GitHub", href: "https://github.com/MSalman3428/notificationSimple" }]
-                },
-                {
-                  title: "Personal Portfolio",
-                  cat: "MERN Stack",
-                  img: "/portfolio1.jpg",
-                  desc: "Developed a full-stack personal portfolio using React.js, Node.js, Express.js, and MongoDB with responsive UI, backend APIs, database integration, Git/GitHub, deployment, testing, and performance optimization.",
-                  tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Git/GitHub"],
-                  links: [{ label: "Live Portfolio", href: "https://msalman3428.github.io/Portfolio/" }]
-                }
-            ].map((proj, idx) => (
-              <TiltCard key={idx} className="bg-slate-50 dark:bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-2xl transition-all duration-500">
-                <div className="h-64 overflow-hidden relative">
-                  <Image src={proj.img} alt={proj.title} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                </div>
-                <div className="p-8">
-                  <span className="text-yellow-600 dark:text-yellow-500 font-bold uppercase tracking-tighter text-xs">{proj.cat}</span>
-                  <h3 className="text-2xl font-bold my-3 group-hover:text-yellow-600 transition-colors">{proj.title}</h3>
-                  <p className="text-slate-600 dark:text-slate-400 mb-6 line-clamp-2 italic">
-                    {proj.desc}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    {proj.tags.map(tag => (
-                      <span key={tag} className="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full text-xs font-semibold uppercase">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  {proj.links.length > 0 && proj.links.map((link) => (
-                    <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="text-slate-900 dark:text-white font-bold inline-flex items-center gap-2 mr-5 hover:text-yellow-600 dark:hover:text-yellow-500 transition-colors">
-                      {link.label} <ArrowRight size={18} />
-                    </a>
-                  ))}
-                  {proj.links.length === 0 && <span className="text-slate-500 dark:text-slate-400 font-semibold">Private Project</span>}
-                </div>
-              </TiltCard>
+          {/* CATEGORY FILTER BUTTONS */}
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
+            {categories.map((cat) => (
+                <button
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
+                    className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+                        activeCategory === cat
+                            ? "bg-yellow-500 text-slate-950 shadow-lg shadow-yellow-500/20 scale-105"
+                            : "bg-white/80 dark:bg-slate-900/80 text-slate-600 dark:text-slate-400 hover:border-yellow-500/50 border border-slate-200 dark:border-slate-800 backdrop-blur-md"
+                    }`}
+                >
+                  {cat}
+                </button>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* CTA SECTION */}
-      <section className="relative py-24 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-100 dark:border-slate-800 overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
-          <div className="absolute top-20 left-10 w-64 h-64 bg-yellow-400 rounded-full filter blur-[100px]"></div>
-          <div className="absolute bottom-10 right-10 w-80 h-80 bg-blue-500 rounded-full filter blur-[100px]"></div>
-        </div>
+          {/* PROJECTS GRID */}
+          <motion.div layout className="grid md:grid-cols-2 gap-8 [perspective:1000px]">
+            <AnimatePresence>
+              {filteredProjects.map((project) => (
+                  <motion.div
+                      layout
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      whileHover={{ y: -8, rotateX: 3 }}
+                      transition={{ duration: 0.4 }}
+                      key={project.id}
+                      className="depth-card group relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-md rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:border-yellow-500/50 shadow-lg transition-all flex flex-col"
+                  >
+                    {/* Image & Overlay */}
+                    <div className="relative h-64 w-full overflow-hidden bg-slate-950">
+                      <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                      />
+                      <div className="absolute top-4 left-4 flex gap-2">
+                        <span className="bg-slate-950/80 backdrop-blur-md text-yellow-400 border border-yellow-500/30 text-xs px-3 py-1 rounded-full font-mono uppercase">
+                          {project.category}
+                        </span>
+                      </div>
+                    </div>
 
-        <div className="container mx-auto px-6 relative z-10 text-center">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-6xl font-extrabold mb-8 leading-tight">
-              Let's Build Something <span className="text-yellow-600 dark:text-yellow-500">Exceptional</span> Together
-            </h2>
-            <p className="text-xl text-slate-600 dark:text-slate-400 mb-12 leading-relaxed">
-              Whether you need a complete solution or expert consultation, 
-              let's start a conversation about your next big idea.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <Link href="/contact" className="px-10 py-4 bg-slate-900 dark:bg-yellow-500 text-white dark:text-slate-900 font-bold rounded-full hover:scale-105 transition-all shadow-xl">
-                Get In Touch
-              </Link>
-              <Link href="/portfolio" className="px-10 py-4 border-2 border-slate-900 dark:border-yellow-500 text-slate-900 dark:text-yellow-500 font-bold rounded-full hover:bg-slate-900 hover:text-white dark:hover:bg-yellow-500 dark:hover:text-slate-900 transition-all">
-                View My Work
-              </Link>
-            </div>
+                    {/* Card Content */}
+                    <div className="p-8 flex-1 flex flex-col justify-between">
+                      <div>
+                        <span className="text-xs text-yellow-500 font-mono tracking-wide">{project.subtitle}</span>
+                        <ThinkDesignHeading as="h3" className="text-2xl font-bold mt-1 mb-3 text-slate-900 dark:text-white group-hover:text-yellow-500 transition-colors font-heading">
+                          {project.title}
+                        </ThinkDesignHeading>
+                        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6 font-sans">
+                          {project.description}
+                        </p>
+                      </div>
 
-            <div className="mt-20 pt-10 border-t border-slate-200 dark:border-slate-800">
-              <h3 className="text-sm font-bold uppercase tracking-[0.3em] text-slate-400 mb-8">Connect With Me</h3>
-              <div className="flex flex-wrap justify-center gap-8 md:gap-12">
-                <a href="mailto:msalman3428@gmail.com" className="group flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-yellow-600 dark:hover:text-yellow-400 transition-all">
-                  <EnvelopeIcon className="w-6 h-6" />
-                  <span className="font-bold">Email</span>
-                </a>
-                <a href="https://linkedin.com/in/muhammad-salman-858247306" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all">
-                  <LinkedInIcon className="w-6 h-6" />
-                  <span className="font-bold">LinkedIn</span>
-                </a>
-                <a href="https://github.com/MSalman3428" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">
-                  <GitHubIcon className="w-6 h-6" />
-                  <span className="font-bold">GitHub</span>
-                </a>
-              </div>
-            </div>
-          </div>
+                      <div>
+                        {/* Tech Badges */}
+                        <div className="flex flex-wrap gap-2 mb-6">
+                          {project.tags.map((tag, i) => (
+                              <span
+                                  key={i}
+                                  className="bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-xs px-3 py-1 rounded-full font-medium"
+                              >
+                                {tag}
+                              </span>
+                          ))}
+                        </div>
+
+                        {/* Card Footer Actions */}
+                        <div className="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-slate-800">
+                          <button
+                              onClick={() => setSelectedProject(project)}
+                              className="text-xs font-bold uppercase tracking-wider text-yellow-500 hover:text-yellow-400 transition-colors flex items-center gap-2"
+                          >
+                            Read Case Study <FaExternalLinkAlt size={10} />
+                          </button>
+                          {project.githubUrl && (
+                              <a
+                                  href={project.githubUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"
+                                  aria-label="View Source Code"
+                              >
+                                <FaGithub size={20} />
+                              </a>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+
+          {/* CASE STUDY MODAL */}
+          <AnimatePresence>
+            {selectedProject && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10">
+                  <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      onClick={() => setSelectedProject(null)}
+                      className="absolute inset-0 bg-slate-950/80 backdrop-blur-md"
+                  />
+                  <motion.div
+                      initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                      className="relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl w-full max-w-3xl max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-10 z-10 text-slate-900 dark:text-white"
+                  >
+                    <button
+                        onClick={() => setSelectedProject(null)}
+                        className="absolute top-6 right-6 text-slate-400 hover:text-white w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center font-bold"
+                    >
+                      ✕
+                    </button>
+
+                    <span className="text-xs font-mono uppercase tracking-widest text-yellow-500">
+                      {selectedProject.category} • {selectedProject.role}
+                    </span>
+                    <ThinkDesignHeading as="h2" className="text-3xl font-extrabold mt-2 mb-4 font-heading">
+                      {selectedProject.title}
+                    </ThinkDesignHeading>
+
+                    <p className="text-slate-600 dark:text-slate-300 text-base leading-relaxed mb-6 font-sans">
+                      {selectedProject.longDescription}
+                    </p>
+
+                    <div className="mb-6">
+                      <ThinkDesignHeading as="h4" className="font-bold text-sm uppercase text-yellow-500 tracking-wider mb-3 font-heading">
+                        Key Features & Implementations
+                      </ThinkDesignHeading>
+                      <ul className="space-y-2">
+                        {selectedProject.features.map((feat, idx) => (
+                            <li key={idx} className="flex items-start gap-3 text-sm text-slate-600 dark:text-slate-300">
+                              <FaCheckCircle className="text-yellow-500 mt-1 flex-shrink-0" />
+                              <span>{feat}</span>
+                            </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="flex flex-wrap gap-4 pt-6 border-t border-slate-200 dark:border-slate-800">
+                      {selectedProject.githubUrl && (
+                          <a
+                              href={selectedProject.githubUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 text-white px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-colors"
+                          >
+                            <FaGithub size={16} /> GitHub Repository
+                          </a>
+                      )}
+                      <button
+                          onClick={() => setSelectedProject(null)}
+                          className="border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 px-6 py-3 rounded-full font-bold text-sm transition-colors"
+                      >
+                        Close Project
+                      </button>
+                    </div>
+                  </motion.div>
+                </div>
+            )}
+          </AnimatePresence>
         </div>
-      </section>
-    </div>
+      </div>
   );
-};
-
-export default Portfolio;
+}
