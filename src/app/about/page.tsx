@@ -32,7 +32,7 @@ const About = () => {
               <div className="absolute -inset-4 bg-yellow-500/20 rounded-full blur-2xl group-hover:bg-yellow-500/40 transition-all duration-500"></div>
               <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-8 border-white dark:border-slate-900 shadow-2xl">
                 <Image
-                  src="./myimg.png"
+                  src="/myimg.png"
                   alt="Muhammad Salman"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -53,10 +53,10 @@ const About = () => {
             
             <div className="bg-slate-50 dark:bg-slate-900/50 p-8 md:p-10 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 backdrop-blur-sm shadow-sm">
               <p className="text-xl md:text-2xl font-medium mb-6 leading-relaxed">
-                As a seasoned <span className="text-yellow-600 dark:text-yellow-500">Software Engineer</span>, I architect transformative web solutions that drive business growth.
+                MERN Stack Developer with hands-on experience building responsive full-stack web applications using React.js, Next.js, Node.js, Express.js, MongoDB, and MySQL. Experienced in REST APIs, real-time applications, Oracle APEX, Git/GitHub, deployment, and AWS/DevOps concepts including CI/CD.
               </p>
               <p className="text-slate-600 dark:text-slate-400 text-lg mb-8">
-                My specialized expertise in React & Next.js development has empowered global brands to achieve their digital potential through user-centric platforms.
+                Based in Islamabad, Pakistan, I build reliable web applications with a focus on responsive interfaces, maintainable backend services, and practical delivery.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -99,13 +99,17 @@ const About = () => {
             </div>
 
             {[
-              { 
-                title: "Proven Industry Experience", 
-                desc: "For over four years, I've partnered with businesses to craft digital experiences that drive measurable results across diverse market sectors." 
+              {
+                title: "Oracle APEX & Web Application Development Intern",
+                desc: "Sehat Sahulat Program, Islamabad | Jul 2025 – Current"
               },
-              { 
-                title: "Technical Specializations", 
-                desc: "Beyond core development, I've mastered advanced hosting configurations, performance strategies, and security protocols." 
+              {
+                title: "Experience",
+                desc: "Worked as a MERN Stack Developer developing and maintaining enterprise web applications using MongoDB, Express.js, React.js, Node.js, JavaScript, HTML, CSS, and Socket.IO."
+              },
+              {
+                title: "Delivery & Collaboration",
+                desc: "Developed responsive web modules, integrated REST APIs, implemented dynamic frontend functionality, and optimized backend services for reliable application performance. Built real-time chatting and notification features using Socket.IO and Node.js, enabling instant communication and updates. Collaborated with developers and business teams on troubleshooting, testing, debugging, and delivering secure, responsive, and scalable solutions."
               }
             ].map((step, i) => (
               <div key={i} className="flex gap-6 group">
@@ -122,30 +126,42 @@ const About = () => {
           </div>
 
           <div className="bg-white dark:bg-slate-900 p-10 rounded-[3rem] shadow-sm border border-slate-200 dark:border-slate-800">
-            <h3 className="text-2xl font-bold mb-8 text-yellow-600 dark:text-yellow-500 uppercase tracking-widest text-sm text-center">Core Competencies</h3>
-            <div className="space-y-8">
+            <h3 className="text-2xl font-bold mb-8 text-yellow-600 dark:text-yellow-500 uppercase tracking-widest text-sm text-center">Technical Skills</h3>
+            <div className="space-y-6">
               {[
-                { label: "Web Development", val: "95%" },
-                { label: "Performance Optimization", val: "90%" },
-                { label: "Security Hardening", val: "88%" },
-                { label: "Infrastructure Management", val: "85%" },
-              ].map((skill, i) => (
-                <div key={i}>
-                  <div className="flex justify-between mb-3 font-bold">
-                    <span>{skill.label}</span>
-                    <span className="text-yellow-600 dark:text-yellow-500">{skill.val}</span>
-                  </div>
-                  <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-3">
-                    <motion.div 
-                      initial={{width: 0}} 
-                      whileInView={{width: skill.val}} 
-                      transition={{duration: 1}}
-                      className="bg-yellow-500 h-3 rounded-full"
-                    />
-                  </div>
+                ["Frontend", "React.js, Next.js, JavaScript, HTML5, CSS3, Bootstrap, Tailwind CSS"],
+                ["Backend", "Node.js, Express.js, REST APIs, Socket.IO, Oracle APEX"],
+                ["Databases", "MongoDB, MySQL, Oracle Database, SQL, PL/SQL"],
+                ["Tools", "Git, GitHub, Postman"],
+                ["Cloud & DevOps", "AWS (EC2, S3, IAM), Docker (Basic), Kubernetes (Basic), CI/CD"],
+              ].map(([label, skills]) => (
+                <div key={label}>
+                  <h4 className="font-bold text-yellow-600 dark:text-yellow-500 mb-1">{label}</h4>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{skills}</p>
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 px-6 bg-white dark:bg-slate-950">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10">
+          <div className="p-10 rounded-[2rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <h2 className="text-3xl font-bold mb-6">Education</h2>
+            <h3 className="text-xl font-bold text-yellow-600 dark:text-yellow-500">Bachelor of Software Engineering</h3>
+            <p className="mt-2 text-slate-600 dark:text-slate-400">City University of Science & Information Technology, Peshawar</p>
+            <p className="mt-4 font-semibold">CGPA: 3.16/4.00</p>
+          </div>
+          <div className="p-10 rounded-[2rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <h2 className="text-3xl font-bold mb-6">Certifications</h2>
+            <ul className="space-y-3 text-slate-600 dark:text-slate-400">
+              <li>MERN Stack Web Development — Coursera/Udemy (2023)</li>
+              <li>Oracle APEX Cloud Developer Certified — Oracle Academy (2025)</li>
+              <li>DevOps and AI on AWS — AWS/Coursera (2026)</li>
+              <li>DevOps and AI on AWS: CI/CD for Generative AI Applications — AWS/Coursera (2026)</li>
+              <li>DevOps and AI on AWS: Upgrading Apps with Generative AI — AWS/Coursera (2026)</li>
+            </ul>
           </div>
         </div>
       </section>

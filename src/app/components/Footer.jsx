@@ -18,8 +18,8 @@ const Footer = () => {
         </div>
 
         <div className="flex gap-6 text-2xl">
-          <Link href="#" className="hover:text-yellow-500 transition-colors"><FaLinkedin /></Link>
-          <Link href="#" className="hover:text-yellow-500 transition-colors"><FaGithub /></Link>
+          <a href="https://linkedin.com/in/muhammad-salman-858247306" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-yellow-500 transition-colors"><FaLinkedin /></a>
+          <a href="https://github.com/MSalman3428" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-yellow-500 transition-colors"><FaGithub /></a>
         </div>
       </div>
 

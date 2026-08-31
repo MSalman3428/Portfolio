@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { FaReact, FaNodeJs , FaArrowRight } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaTools, FaLightbulb, FaShieldAlt, FaArrowRight } from "react-icons/fa";
 import { SiMysql, SiMongodb, SiJavascript } from "react-icons/si";
 import { motion } from "framer-motion";
 
@@ -31,7 +31,7 @@ const data = {
     { icon: <SiMongodb size={50} />, title: "Database Solutions", description: "Architecting scalable data structures with MongoDB and SQL.", color: "text-green-600 dark:text-green-400" },
   ],
   projects: [
-    { title: "E-commerce Platform", description: "A seamless, secure, and fully integrated digital shopping experience.", image: "/hero.jpg", link: "/portfolio/e-commerce-platform" },
+    { title: "E-commerce Platform", description: "A seamless, secure, and fully integrated digital shopping experience.", image: "./hero.jpg", link: "/portfolio/e-commerce-platform" },
   ],
 };
 
@@ -41,7 +41,7 @@ export default function Home() {
       
       {/* HERO SECTION */}
       <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
-        <Image src="/hero.jpg" alt="hero" fill className="object-cover scale-105" priority />
+        <Image src="./hero.jpg" alt="hero" fill className="object-cover scale-105" priority />
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-transparent" />
         
         <motion.div initial="hidden" animate="visible" variants={animations.staggerContainer} className="relative text-center px-6 text-white max-w-5xl">

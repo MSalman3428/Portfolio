@@ -65,7 +65,7 @@ const ServicesPage = () => {
         <div 
           className="absolute inset-0"
           style={{
-            backgroundImage: 'url(./services.jpg)',
+            backgroundImage: 'url(/services.jpg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -150,7 +150,7 @@ const ServicesPage = () => {
           <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" className="relative">
              <div className="absolute -inset-4 bg-yellow-500/20 rounded-[2rem] blur-2xl"></div>
              <Image 
-                src="./darkexper.jpg" 
+                src="/darkexper.jpg" 
                 alt="Expertise" 
                 width={600}
                 height={600}
@@ -184,7 +184,7 @@ const ServicesPage = () => {
       {/* CTA Section */}
       <section className="relative w-full h-[60vh] flex items-center justify-center px-6">
         <div className="absolute inset-0 overflow-hidden">
-          <Image src="./conact.jpg" alt="Contact" fill className="object-cover scale-110 brightness-50" />
+          <Image src="/conact.jpg" alt="Contact" fill className="object-cover scale-110 brightness-50" />
           <div className="absolute inset-0 bg-slate-950/60"></div>
         </div>
         <div className="relative z-10 text-center max-w-4xl">
